@@ -9,6 +9,7 @@ fi
 lxc_id=$1
 directory=$2
 mount_point=$3
+user=${4:-0}
 
 # check to see if the directory exists
 if [ ! -d "$directory" ]; then
@@ -21,6 +22,15 @@ if grep -q "$directory" /etc/pve/lxc/$lxc_id.conf; then
   echo "Directory $directory is already mounted into lxc container $lxc_id"
   exit 0
 fi
+
+# setup permissions for the directory
+echo "Setting permissions for directory $directory"
+# add 100000 to the user id specified in the fourth argument, or 0 if no user id is specified
+user_id=$((user + 100000))
+# change the ownership of the directory to the user id specified in the fourth argument, or 0 if no user id is specified
+chown -R $user_id:$user_id $directory
+# change the permissions of the directory to 755
+chmod -R 755 $directory
 
 # figure out the next available mount point in the lxc container
 # get the lines that start with mp and a number followed by a colon

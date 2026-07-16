@@ -39,7 +39,7 @@ fi
 
 # mount the directory into the lxc container
 echo "Mounting directory $directory into lxc container $lxc_id"
-pct set $lxc_id -mp$next_mp_number "$directory,$mount_point"
+echo "mp$next_mp_number: $directory,mp=$mount_point" >> /etc/pve/lxc/$lxc_id.conf
 
 # restart the lxc container
 echo "Restarting lxc container $lxc_id"

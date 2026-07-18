@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# This script is intended to run on your proxmox host. It will enable tun (network tunneling) for the linux containers (lxc)
+# running on your host. This is a pre-requisite for running tailscale within the lxc.
+#
 
 # make sure we have exactly one argument
 if [ "$#" -ne 1 ]; then

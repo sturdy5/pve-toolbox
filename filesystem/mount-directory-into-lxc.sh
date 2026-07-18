@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# This script is intended to be run from your proxmox host and will mount a directory from the host into the linux container (lxc)
+# specified.
+#
 
 # make sure there is exactly three arguments
 if [ "$#" -ne 3 ]; then

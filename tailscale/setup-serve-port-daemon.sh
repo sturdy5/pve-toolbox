@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# This script is intended to be run in your linux container (lxc). It will setup tailscale to listen on a port other than 80 or 443.
+#
 
 # make sure we have exactly one argument
 if [ "$#" -ne 1 ]; then

@@ -32,6 +32,7 @@ Requires=tailscaled.service
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sleep 5
 ExecStart=/usr/bin/tailscale serve $port
 ExecStop=/usr/bin/tailscale serve off
 
